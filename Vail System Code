@@ -1,0 +1,34 @@
+import java.util.Arrays;
+
+public class ArrayRotation {
+    
+    public static int[] rotateLeft(int[] array, int positions) {
+        int length = array.length;
+        
+        // Calculate the effective number of rotations
+        int effectiveRotations = positions % length;
+        
+        // Create a new array to store the rotated elements
+        int[] rotatedArray = new int[length];
+        
+        // Copy the rotated elements to the new array
+        for (int i = 0; i < length; i++) {
+            int newIndex = (i - effectiveRotations + length) % length;
+            rotatedArray[newIndex] = array[i];
+        }
+        
+        return rotatedArray;
+    }
+    
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 4, 5, 6, 7};
+        
+        // Rotate by 2 positions
+        int[] rotatedArray1 = rotateLeft(originalArray, 2);
+        System.out.println("Rotated by 2 positions: " + Arrays.toString(rotatedArray1));
+        
+        // Rotate by 8 positions
+        int[] rotatedArray2 = rotateLeft(originalArray, 8);
+        System.out.println("Rotated by 8 positions: " + Arrays.toString(rotatedArray2));
+    }
+}
